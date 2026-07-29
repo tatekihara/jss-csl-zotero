@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>社会学評論スタイル（非公式）Zotero 入門ガイド</title>
+<meta name="description" content="日本社会学会『社会学評論スタイルガイド』第3版に準拠した非公式の Zotero 用引用スタイル（CSL）の入門ガイド。Zotero の各欄に何を入力すると、本文中の引用と文献リストがどう出力されるのかを、和書・雑誌論文・編書・分担執筆・訳書・英語文献・ウェブページ・ブログ記事の実例で示します。">
+<link rel="canonical" href="https://tatekihara.github.io/jss-csl-zotero/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="社会学評論スタイル（非公式）Zotero 入門ガイド">
+<meta property="og:description" content="日本社会学会『社会学評論スタイルガイド』第3版に準拠した非公式の Zotero 用引用スタイル（CSL）の入門ガイド。Zotero の各欄に何を入力すると、本文中の引用と文献リストがどう出力されるのかを、和書・雑誌論文・編書・分担執筆・訳書・英語文献・ウェブページ・ブログ記事の実例で示します。">
+<meta property="og:url" content="https://tatekihara.github.io/jss-csl-zotero/">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<style>
+:root {
+  --bg: #faf9f6; --fg: #1f2328; --muted: #59636e; --line: #d9d4c8;
+  --panel: #ffffff; --accent: #7a1f2b; --accent-soft: #f6ebe7;
+  --warn-bg: #fdf3e3; --warn-line: #d9a441; --code-bg: #f0ede5;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181c; --fg: #e7e4dd; --muted: #a3a89f; --line: #3a3f45;
+    --panel: #1f2228; --accent: #d98b93; --accent-soft: #2c2325;
+    --warn-bg: #2b2515; --warn-line: #a97f2f; --code-bg: #2a2d33;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
+  line-height: 1.8; font-size: 15px;
+}
+main { max-width: 880px; margin: 0 auto; padding: 2.5rem 1.25rem 5rem; }
+header.top { border-bottom: 3px double var(--line); padding-bottom: 1.2rem; margin-bottom: 2rem; }
+h1 { font-size: 1.6rem; margin: 0 0 .4rem; letter-spacing: .02em; }
+.lead { color: var(--muted); margin: 0 0 .9rem; }
+.lead:last-child { margin-bottom: 0; }
+h2 {
+  font-size: 1.2rem; margin: 3rem 0 1rem; padding-left: .6rem;
+  border-left: 5px solid var(--accent);
+}
+h3 { font-size: 1.05rem; margin: 1.8rem 0 .6rem; color: var(--accent); }
+.card h3 { margin: 0 0 .8rem; }
+.must {
+  background: var(--warn-bg); border: 1px solid var(--warn-line);
+  border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0;
+}
+.must strong { display: block; margin-bottom: .2rem; }
+.card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+  padding: 1.2rem 1.3rem; margin: 1.4rem 0;
+}
+.io { display: flex; gap: .8rem; align-items: stretch; flex-wrap: wrap; }
+.input, .output { flex: 1 1 300px; min-width: 0; }
+.arrow { align-self: center; font-size: 1.6rem; color: var(--muted); flex: 0 0 auto; }
+.panel-label {
+  font-size: .78rem; font-weight: 700; letter-spacing: .08em;
+  color: var(--muted); margin-bottom: .4rem;
+}
+.input table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+.input th, .input td {
+  border: 1px solid var(--line); padding: .3rem .55rem; text-align: left;
+  vertical-align: top; overflow-wrap: anywhere;
+}
+.input th { width: 9.5em; background: var(--accent-soft); font-weight: 600; white-space: nowrap; }
+.out-label { font-size: .78rem; color: var(--muted); margin: .7rem 0 .15rem; }
+.out-label:first-child { margin-top: 0; }
+.bib, .cite {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  background: var(--code-bg); border-radius: 6px; padding: .55rem .7rem;
+  margin: 0; font-size: .92rem; overflow-wrap: anywhere;
+}
+.bib { text-indent: -2em; padding-left: calc(.7rem + 2em); }
+.note { font-size: .88rem; color: var(--muted); margin: .9rem 0 0; }
+.note-inline { font-size: .82rem; color: var(--muted); margin: .3rem 0 0; }
+.manual-fix {
+  margin-top: 1rem; border: 1.5px dashed var(--warn-line);
+  background: var(--warn-bg); border-radius: 8px; padding: .8rem 1rem;
+}
+.manual-fix .manual-step { font-size: .85rem; font-weight: 700; margin: 0 0 .5rem; }
+.note code, p code { background: var(--code-bg); padding: .05em .35em; border-radius: 4px; font-size: .9em; }
+a { color: var(--accent); }
+nav.toc { margin: 1rem 0 0; font-size: .86rem; line-height: 2; }
+nav.toc a { margin-right: 1rem; white-space: nowrap; }
+ul.links { padding-left: 1.2rem; }
+ul.links li { margin-bottom: .35rem; overflow-wrap: anywhere; }
+table.faq { width: 100%; border-collapse: collapse; font-size: .9rem; margin: 1rem 0; }
+table.faq th, table.faq td { border: 1px solid var(--line); padding: .5rem .7rem; text-align: left; vertical-align: top; }
+table.faq th { background: var(--accent-soft); }
+dl.credits { display: grid; grid-template-columns: max-content 1fr; gap: .35rem 1rem; margin: 1.2rem 0 0; font-size: .9rem; }
+dl.credits dt { font-weight: 700; color: var(--muted); white-space: nowrap; }
+dl.credits dd { margin: 0; overflow-wrap: anywhere; }
+.backmatter { margin-top: 4rem; padding-top: 1.4rem; border-top: 1px solid var(--line); font-size: .9em; line-height: 1.75; }
+.backmatter h2 { font-size: 1.02rem; margin: 2.4rem 0 .8rem; }
+.backmatter > h2:first-child { margin-top: 0; }
+.backmatter p, .backmatter dl.credits, .backmatter ul.links, .backmatter .note { font-size: 1em; }
+.backmatter .note { color: inherit; margin-top: .8rem; }
+@media (max-width: 640px) { dl.credits { grid-template-columns: 1fr; gap: .1rem; } dl.credits dd { margin-bottom: .5rem; } }
+@media (max-width: 640px) { .arrow { display: none; } }
+
+/* ---- テーマ b: 角丸をゼロに（v1 からの差分） ---- */
+.card, .must, .manual-fix, .bib, .cite,
+.note code, p code, table.faq, .input table { border-radius: 0; }
+.manual-fix { border-style: solid; border-width: 1px; }
+
+
+/* ---- テーマ c: 配色の差し替え（b からの差分） ---- */
+:root {
+  --bg: #fbfbfa; --fg: #1b1b1b; --muted: #57574f; --line: #d4d3cc;
+  --panel: #ffffff; --accent: #1f3b63; --accent-soft: #eef1f5;
+  --warn-bg: #f2f2ee; --warn-line: #1b1b1b; --code-bg: #eeeeea;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15161a; --fg: #e6e5e0; --muted: #a0a099; --line: #3b3d42;
+    --panel: #1c1e22; --accent: #8fb3dd; --accent-soft: #23272e;
+    --warn-bg: #212327; --warn-line: #e6e5e0; --code-bg: #26282d;
+  }
+}
+/* リード段落（冒頭と「はじめに」）を本文と同じ濃さにする */
+.lead { color: var(--fg); }
+/* 注意書きは角のない四角い囲みにする（アンバーの塗り枠はやめ、墨の細枠＋淡い地） */
+.must { border: 1px solid var(--warn-line); border-radius: 0; background: var(--warn-bg); padding: .9rem 1.1rem; }
+.manual-fix { border: 1px solid var(--warn-line); border-radius: 0; background: var(--warn-bg); }
+
+</style>
+</head>
+<body>
+<main>
+
+<header class="top">
+<h1>社会学評論スタイル（非公式）Zotero 入門ガイド</h1>
+<p class="lead"><strong>このZotero用のcslスタイルは、日本社会学会が公式に提供または承認したものではありません。</strong>『社会学評論スタイルガイド』第3版を参照して木原盾/Tate KIHARA（慶應義塾大学）が湘南藤沢キャンパスでの教育目的に作成した非公式のスタイルで、CC BY-SA 3.0ライセンスに従い公開しているものです。他の方の利用は妨げませんが、各自の責任で使ってください。</p>
+<nav class="toc">
+<a href="#about">Zotero と CSL について</a><a href="#styleguide">スタイルガイドについて</a><a href="#install">ダウンロードとインストール</a><a href="#must">必ず守る2点</a><a href="#types">文献タイプ別の入力と出力</a><a href="#faq">よくある失敗</a><a href="#credits">クレジット</a><a href="#dev">開発・検証と注意</a><a href="#links">リンク</a>
+</nav>
+</header>
+
+<h2>はじめに</h2>
+<p class="lead">このZoteroのcslファイルは、木原盾/Tate KIHARA（慶應義塾大学）が、Kei SATO氏（京都大学）がCC BY-SA 3.0ライセンスのもとで公開しているJuris-M用スタイル「Juris-Mで社会学評論」をフォークし、標準のZoteroで使えるように移植したものです。</p>
+<p class="lead">想定している主な利用者は、木原研究会（ゼミ）で卒業プロジェクトや修士論文を書く学生です。これを用いることで、従来、Zoteroでは難しかった欧文と日本語の引用文献の出力が容易になります。ただし、以下に示すようなマニュアルの操作はまだ必要となります。必ずREADMEと下記を読んだ上でご利用ください。</p>
+<p class="lead">以下では、Zoteroの各項目にどのような情報を入力すれば、どのような本文中の引用や文献リストが出力されるのかを、文献の種類ごとに実例を用いて説明します。掲載する例はすべて実在の文献で、その書誌データを Zotero と同じ引用処理エンジン（citeproc-js）で本スタイルにより出力した実際の結果です（訳書の「手で直した後の形」として示す1行だけは、自動出力ではありません）。</p>
+
+<h2 id="about">Zotero と CSL について</h2>
+<p>Zoteroは、無料の文献管理ソフトです。ウェブページや論文から書誌情報を取り込み、ライブラリに保存しておくことで、原稿中の引用と文献リストを自動で作成できます。</p>
+<p>引用や文献リストの書式を定めるのが、CSL（Citation Style Language）ファイルです。拡張子が <code>.csl</code> のファイルごとに1つの書式が設定されており、Zoteroで使用するスタイルを切り替えるだけで、投稿先に応じた書式に変更できます。</p>
+<p>「社会学評論」スタイルはZoteroに標準搭載されていないため、ここで配布する .csl ファイルを追加して使用します。追加は初回のみで、その後はスタイル一覧から選択できます。</p>
+
+<h2 id="styleguide">『社会学評論スタイルガイド』について</h2>
+<p>『社会学評論スタイルガイド』は、日本社会学会編集委員会が作成した論文執筆の手引きで、本文中の引用や参考文献の書式を定めています。現行の第3版は、日本社会学会のウェブサイトで全文が公開されています（<a href="https://jss-sociology.org/bulletin/guide/">https://jss-sociology.org/bulletin/guide/</a>）。『社会学評論』への投稿に限らず、社会学論文で広く用いられており、木原研究会で日本語の卒業プロジェクトや修士論文を書く場合も、この書式に従うことを求めます。</p>
+<p>ここで配布する .csl は、第3版の引用・参考文献書式を、Zoteroで可能な範囲で再現したものです。自動出力では対応できない箇所については、以下の説明とREADMEで注意点を示しています。</p>
+
+<h2 id="install">ダウンロードとインストール</h2>
+
+<h3>1. Zotero 本体を入れる</h3>
+<ol>
+<li>Zotero の公式サイトのダウンロードページ（<a href="https://www.zotero.org/download/">https://www.zotero.org/download/</a>）を開き、使っているパソコン（Windows・Mac・Linux）用のインストーラーをダウンロードしてインストールします。無料です。</li>
+<li>同じページから「Zotero Connector」（ブラウザの拡張機能）も入れてください。ウェブサイトや論文のページから書誌情報をボタンで取り込むには、これが必要です。Chrome・Firefox・Edge 用が配布されていて、Safari 用は Zotero 本体に同梱されています（Safari の設定の機能拡張の欄で有効にします）。</li>
+<li>Zotero を起動します。アカウントの登録をしなくても使えます（複数のパソコンで同期したい場合は、無料のアカウントを作ります）。</li>
+<li>Word で引用を挿入するには、Zotero のワープロ連携を使います。Zotero を入れると Word 用のアドインも一緒に入り、Word のリボンに「Zotero」タブが現れます（現れないときは、Zotero の設定の「引用」タブの下のほうにある「ワード・プロセッサ」の欄から入れ直せます）。使い方は Zotero の公式ドキュメント（<a href="https://www.zotero.org/support/word_processor_integration">Word Processor Integration</a>）を参照してください。LibreOffice と Google ドキュメントにも同じ連携があります。</li>
+</ol>
+
+<h3>2. 社会学評論スタイル（.csl ファイル）を追加する</h3>
+<ol>
+<li>木原の GitHub のページ（<a href="https://github.com/tatekihara/jss-csl-zotero">https://github.com/tatekihara/jss-csl-zotero</a>）を開きます。</li>
+<li><code>jss-styleguide3-zotero.csl</code> を開き、ダウンロードのボタンでパソコンに保存します。画面にファイルの中身が文字の羅列として表示されますが、それで正常です。</li>
+<li>Zotero の設定を開き、「引用」タブの「スタイル管理」にある「Add from File…」ボタン（この版では英語表示のままです）を押して、保存した .csl ファイルを選びます。</li>
+<li>インストール時に「有効な CSL スタイルファイルではない」という趣旨の警告が出ますが、これは想定内です（和文と欧文の書式切り替えに拡張機能を使っているため）。そのまま続行してください。</li>
+<li>スタイルの一覧に「社会学評論スタイル 第3版（Zotero 用・非公式）」が現れればインストールは完了です。</li>
+</ol>
+
+<h2 id="must">最初に: この2つだけは必ず</h2>
+
+<div class="must">
+<strong>1. 和文文献の「言語」欄に必ず <code>ja</code> と入れる</strong>
+このスタイルは「言語」欄が <code>ja</code> のとき和文書式に切り替わります。和文文献なのに言語欄が空だったり「日本語」と入っていたりすると、その文献はまるごと英語書式（カンマ区切り・書名イタリック）で出てしまいます。Zotero が自動で取り込んだアイテムは要注意です。英語文献は言語欄が空のままで構いません（英語書式が既定のため。<code>en</code> と入れても同じです）。
+</div>
+
+<div class="must">
+<strong>2. 文献リストの並び順は、提出前に必ず自分で確認して手修正する</strong>
+規定では和文文献も著者のローマ字読みのアルファベット順に並べますが、Zotero は漢字の読みを知らないため、和文文献は漢字の文字コード順に並びます。これはスタイルでは直せません。最後に並び順を確認して、必要なら手で並べ替えるところまでがセットです。ただし、Word の文献リストは中身が Zotero の管理するフィールドなので、そのまま並べ替えても引用を足した時点で書き戻されて消えます。手直しは原稿が固まってから、Word の Zotero タブでフィールドの連結を切る操作（Unlink Citations）をしたあとに行ってください。切ると Zotero 側からは戻せないので、切る前のファイルを別名で残しておくと安全です。
+</div>
+
+<h2 id="types">文献タイプ別: 入力と出力</h2>
+<p>欄名は日本語版 Zotero（バージョン9）の表示に合わせています（バージョンによって少し違うことがあります）。</p>
+
+
+<section class="card">
+  <h3>和書（1人の著者の本）</h3>
+  <div class="io">
+    <div class="input">
+      <div class="panel-label">Zotero に入力</div>
+      <table><tr><th>アイテムの種類</th><td>書籍</td></tr>
+<tr><th>題名</th><td>社会移動の歴史社会学――生業／職業／学校</td></tr>
+<tr><th>著者名</th><td>姓: 佐藤　名: 香</td></tr>
+<tr><th>出版年月日</th><td>2004</td></tr>
+<tr><th>出版社</th><td>東洋館出版社</td></tr>
+<tr><th>言語</th><td>ja</td></tr></table>
+    </div>
+    <div class="arrow" aria-hidden="true">&#8594;</div>
+    <div class="output">
+      <div class="panel-label">出力される形</div>
+      <p class="out-label">文献リスト</p>
+      <p class="bib">佐藤香，2004，『社会移動の歴史社会学――生業／職業／学校』東洋館出版社．</p>
+      <p class="out-label">本文中の引用</p>
+      <p class="cite">（佐藤 2004）</p>
+      
+    </div>
+  </div>
+  
+  <p class="note">ポイント: 著者名は「姓」と「名」を別々の欄に入れます。出力では姓と名がスペースなしでつながります。「言語」欄の ja を忘れずに。共著の場合は作成者の行を人数分増やすだけで、ナカグロ（・）は自動で入ります。副題は――（2倍ダッシュ）でつないで題名欄に入れます。</p>
+</section>
+
+<section class="card">
+  <h3>和文の雑誌論文</h3>
+  <div class="io">
+    <div class="input">
+      <div class="panel-label">Zotero に入力</div>
+      <table><tr><th>アイテムの種類</th><td>学術論文</td></tr>
+<tr><th>題名</th><td>士族と社会移動</td></tr>
+<tr><th>雑誌</th><td>社会学評論</td></tr>
+<tr><th>著者名</th><td>姓: 安田　名: 三郎</td></tr>
+<tr><th>出版年月日</th><td>1969</td></tr>
+<tr><th>巻</th><td>19</td></tr>
+<tr><th>号</th><td>4</td></tr>
+<tr><th>ページ数</th><td>21-40</td></tr>
+<tr><th>言語</th><td>ja</td></tr></table>
+    </div>
+    <div class="arrow" aria-hidden="true">&#8594;</div>
+    <div class="output">
+      <div class="panel-label">出力される形</div>
+      <p class="out-label">文献リスト</p>
+      <p class="bib">安田三郎，1969，「士族と社会移動」『社会学評論』19(4): 21-40．</p>
+      <p class="out-label">本文中の引用</p>
+      <p class="cite">（安田 1969）</p>
+      
+    </div>
+  </div>
+  
+  <p class="note">ポイント: 「ページ数」欄には「21-40」のように全部の桁を入れてください。規定の略記（たとえば 254-272 なら 254-72）は自動で行われます。『』や巻(号)、コロンなどの記号も自動です。</p>
+</section>
+
+<section class="card">
+  <h3>編書（編者の本）</h3>
+  <div class="io">
+    <div class="input">
+      <div class="panel-label">Zotero に入力</div>
+      <table><tr><th>アイテムの種類</th><td>書籍</td></tr>
+<tr><th>題名</th><td>総合政策学の方法論的展開</td></tr>
+<tr><th>編集者名</th><td>姓: 桑原　名: 武夫</td></tr>
+<tr><th>編集者名</th><td>姓: 清水　名: 唯一朗</td></tr>
+<tr><th>出版年月日</th><td>2023</td></tr>
+<tr><th>出版社</th><td>慶應義塾大学総合政策学部</td></tr>
+<tr><th>言語</th><td>ja</td></tr></table>
+    </div>
+    <div class="arrow" aria-hidden="true">&#8594;</div>
+    <div class="output">
+      <div class="panel-label">出力される形</div>
+      <p class="out-label">文献リスト</p>
+      <p class="bib">桑原武夫・清水唯一朗編，2023，『総合政策学の方法論的展開』慶應義塾大学総合政策学部．</p>
+      <p class="out-label">本文中の引用</p>
+      <p class="cite">（桑原・清水編 2023）</p>
+      
+    </div>
+  </div>
+  
+  <p class="note">ポイント: 作成者の行の左にある「著者名」という文字をクリックすると、種類を「編集者名」に変えられます。「編」の字は自動で付きます。なお、この本は奥付を見ると、発行者が慶應義塾大学総合政策学部、発売所が慶應義塾大学出版会という、やや珍しい分担になっています。規定の考え方では出版社の欄に入れるのは発行元なので、ここでは慶應義塾大学出版会ではなく総合政策学部を採用していますが、慶應義塾大学出版会としても間違いとは言えないかもしれません。いずれにせよ、引用にはこうした細かい確認が求められることがあります。</p>
+</section>
+
+<section class="card">
+  <h3>編書のなかの1章（分担執筆）</h3>
+  <div class="io">
+    <div class="input">
+      <div class="panel-label">Zotero に入力</div>
+      <table><tr><th>アイテムの種類</th><td>書籍の章</td></tr>
+<tr><th>題名</th><td>トランスナショナルな生活を測る――量的手法の適用可能性</td></tr>
+<tr><th>書籍名</th><td>国際社会学の技法――考える・実践する・変える</td></tr>
+<tr><th>著者名</th><td>姓: 永吉　名: 希久子</td></tr>
+<tr><th>編集者名</th><td>姓: 森　名: 千香子</td></tr>
+<tr><th>編集者名</th><td>姓: 南川　名: 文里</td></tr>
+<tr><th>編集者名</th><td>姓: 村上　名: 一基</td></tr>
+<tr><th>出版年月日</th><td>2026</td></tr>
+<tr><th>出版社</th><td>名古屋大学出版会</td></tr>
+<tr><th>ページ数</th><td>90-103</td></tr>
+<tr><th>言語</th><td>ja</td></tr></table>
+    </div>
+    <div class="arrow" aria-hidden="true">&#8594;</div>
+    <div class="output">
+      <div class="panel-label">出力される形</div>
+      <p class="out-label">文献リスト</p>
+      <p class="bib">永吉希久子，2026，「トランスナショナルな生活を測る――量的手法の適用可能性」森千香子・南川文里・村上一基編『国際社会学の技法――考える・実践する・変える』名古屋大学出版会，90-103．</p>
+      <p class="out-label">本文中の引用</p>
+      <p class="cite">（永吉 2026）</p>
+      
+    </div>
+  </div>
+  
+  <p class="note">ポイント: 「書籍の章」タイプを使い、章の著者と本全体の編者を両方入れます。サブタイトルは――（2倍ダッシュ）でつないで題名欄・書籍名欄に入れます。「章題」編者名編『書名』の並びは自動です。</p>
+</section>
+
+<section class="card">
+  <h3>訳書（翻訳された本）</h3>
+  <div class="io">
+    <div class="input">
+      <div class="panel-label">Zotero に入力</div>
+      <table><tr><th>アイテムの種類</th><td>書籍</td></tr>
+<tr><th>題名</th><td>社会理論と社会構造</td></tr>
+<tr><th>著者名</th><td>姓: Merton　名: Robert K.</td></tr>
+<tr><th>翻訳者名</th><td>姓: 森　名: 東吾</td></tr>
+<tr><th>翻訳者名</th><td>姓: 森　名: 好夫</td></tr>
+<tr><th>翻訳者名</th><td>姓: 金沢　名: 実</td></tr>
+<tr><th>翻訳者名</th><td>姓: 中島　名: 竜太郎</td></tr>
+<tr><th>出版年月日</th><td>2024</td></tr>
+<tr><th>出版社</th><td>みすず書房</td></tr>
+<tr><th>Original Date</th><td>1957</td></tr>
+<tr><th>言語</th><td>ja</td></tr></table>
+    </div>
+    <div class="arrow" aria-hidden="true">&#8594;</div>
+    <div class="output">
+      <div class="panel-label">出力される形</div>
+      <p class="out-label">文献リスト</p>
+      <p class="bib">Merton Robert K.，1957=2024，『社会理論と社会構造』森東吾・森好夫・金沢実・中島竜太郎訳，みすず書房．</p>
+      <p class="out-label">本文中の引用</p>
+      <p class="cite">（Merton 1957=2024）</p>
+      <p class="out-label">ページ付きで引用するとき</p>
+      <p class="cite">（Merton 1957=2024: 78）</p>
+    </div>
+  </div>
+  <div class="manual-fix">
+    <p class="manual-step">&#8595; 提出前に、文献リストのこの項目だけ<strong>手で</strong>規定の2部形式に直します（自動では出ません）</p>
+    <p class="bib">Merton, Robert K., 1957, <i>Social Theory and Social Structure</i>, Glencoe, Ill.: The Free Press.（森東吾・森好夫・金沢実・中島竜太郎訳，2024，『社会理論と社会構造』みすず書房．）</p>
+    <p class="note-inline">規定の型: 原典の書誌情報 .（訳者名訳，翻訳の出版年，『訳書のタイトル』出版社名．）。本文中の引用は直す必要がありません。</p>
+  </div>
+  <p class="note">ポイント: (1) 作成者に「翻訳者名」の行を追加する、(2) 「出版年月日」は訳書の年、(3) 原著の年は「Original Date」欄に入れる、の3点セットです。「出版年月日」に入れるのは自分が参照した版の年です。この例は2024年の新装版を参照した場合で、例えば、1961年の初版の訳を参照した場合は2024ではなく1961を入れることになります。原著者名は「姓: Merton　名: Robert K.」のようにアルファベットのフルネームで入れてください。本文中の引用が規定どおりの（Merton 1957=2024）の形になります（カタカナで入れると本文中の引用もカタカナになり、規定の形から外れます）。なお、スタイルガイドの規定では訳書は「原典の書誌＋丸カッコ内に和訳の書誌」という形なので、規定どおりの完全な形にする場合は、文献リストのこの項目だけ提出前に手で直してください（本文中の引用はこのままで規定どおりです）。</p>
+</section>
+
+<section class="card">
+  <h3>英語の本</h3>
+  <div class="io">
+    <div class="input">
+      <div class="panel-label">Zotero に入力</div>
+      <table><tr><th>アイテムの種類</th><td>書籍</td></tr>
+<tr><th>題名</th><td>Categorically Unequal: The American Stratification System</td></tr>
+<tr><th>著者名</th><td>姓: Massey　名: Douglas S.</td></tr>
+<tr><th>出版年月日</th><td>2007</td></tr>
+<tr><th>出版社</th><td>Russell Sage Foundation</td></tr>
+<tr><th>都市</th><td>New York</td></tr></table>
+    </div>
+    <div class="arrow" aria-hidden="true">&#8594;</div>
+    <div class="output">
+      <div class="panel-label">出力される形</div>
+      <p class="out-label">文献リスト</p>
+      <p class="bib">Massey, Douglas S., 2007, <i>Categorically Unequal: The American Stratification System</i>, New York: Russell Sage Foundation.</p>
+      <p class="out-label">本文中の引用</p>
+      <p class="cite">（Massey 2007）</p>
+      
+    </div>
+  </div>
+  
+  <p class="note">ポイント: 英語文献は「言語」欄が空のままで英語書式（カンマ区切り、書名イタリック）になります（英語書式が既定のため）。英語の本は「都市」欄（出版地）も入れてください。出版地: 出版社 の形（New York: Russell Sage Foundation）で出ます。サブタイトルはコロンでつないで題名欄に入れます。</p>
+</section>
+
+<section class="card">
+  <h3>英語の雑誌論文</h3>
+  <div class="io">
+    <div class="input">
+      <div class="panel-label">Zotero に入力</div>
+      <table><tr><th>アイテムの種類</th><td>学術論文</td></tr>
+<tr><th>題名</th><td>An Immigrant Paradox? Contextual Attainment and Intergenerational Educational Mobility</td></tr>
+<tr><th>雑誌</th><td>American Sociological Review</td></tr>
+<tr><th>著者名</th><td>姓: Feliciano　名: Cynthia</td></tr>
+<tr><th>著者名</th><td>姓: Lanuza　名: Yader R.</td></tr>
+<tr><th>出版年月日</th><td>2017</td></tr>
+<tr><th>巻</th><td>82</td></tr>
+<tr><th>号</th><td>1</td></tr>
+<tr><th>ページ数</th><td>211-241</td></tr></table>
+    </div>
+    <div class="arrow" aria-hidden="true">&#8594;</div>
+    <div class="output">
+      <div class="panel-label">出力される形</div>
+      <p class="out-label">文献リスト</p>
+      <p class="bib">Feliciano, Cynthia and Yader R. Lanuza, 2017, “An Immigrant Paradox? Contextual Attainment and Intergenerational Educational Mobility,” <i>American Sociological Review</i>, 82(1): 211-41.</p>
+      <p class="out-label">本文中の引用</p>
+      <p class="cite">（Feliciano and Lanuza 2017）</p>
+      
+    </div>
+  </div>
+  
+  <p class="note">ポイント: 2人の共著は「Feliciano, Cynthia and Yader R. Lanuza」のように and で自動連結されます（姓が先になるのは1人目だけ）。誌名のイタリックや、ページの略記（211-241 と入力すると 211-41）も自動です。</p>
+</section>
+
+<section class="card">
+  <h3>ウェブページ</h3>
+  <div class="io">
+    <div class="input">
+      <div class="panel-label">Zotero に入力</div>
+      <table><tr><th>アイテムの種類</th><td>ウェブページ</td></tr>
+<tr><th>題名</th><td>吉野作造とは？</td></tr>
+<tr><th>ウェブサイト名</th><td>吉野作造記念館ホームページ</td></tr>
+<tr><th>著者名</th><td>吉野作造記念館（作成者欄を1欄形式に切り替えて入力）</td></tr>
+<tr><th>出版年月日</th><td>（空欄）</td></tr>
+<tr><th>URL</th><td>https://www.yoshinosakuzou.info/blank-22</td></tr>
+<tr><th>アクセス日時</th><td>2026-07-28</td></tr>
+<tr><th>言語</th><td>ja</td></tr></table>
+    </div>
+    <div class="arrow" aria-hidden="true">&#8594;</div>
+    <div class="output">
+      <div class="panel-label">出力される形</div>
+      <p class="out-label">文献リスト</p>
+      <p class="bib">吉野作造記念館，2026，「吉野作造とは？」，吉野作造記念館ホームページ，（2026年7月28日取得，https://www.yoshinosakuzou.info/blank-22）．</p>
+      <p class="out-label">本文中の引用</p>
+      <p class="cite">（吉野作造記念館 2026）</p>
+      
+    </div>
+  </div>
+  
+  <p class="note">ポイント: 「アクセス日時」（アクセスした日）を必ず入れてください。「出版年月日」欄が空のときは、アクセス日時の年が年の位置に入ります（規定どおりの動きです）。原稿を仕上げたあとにアクセス日時を更新すると本文の（著者 年）が変わってしまうので、仕上げのあとは触らないでください。学会や大学などの機関が作成者の場合は、名前のすぐ右にある四角いアイコン（その右に ⊖ ⊕ ⋯ が並びます。ツールチップは Switch to Single Field で、日本語版でも英語表示です）を押して1欄形式にし、機関名を入れます。</p>
+</section>
+
+<section class="card">
+  <h3>ブログ記事</h3>
+  <div class="io">
+    <div class="input">
+      <div class="panel-label">Zotero に入力</div>
+      <table><tr><th>アイテムの種類</th><td>ブログ記事</td></tr>
+<tr><th>題名</th><td>今年面白かった社会学論文10選（2021年）</td></tr>
+<tr><th>ブログ名</th><td>Under the Canopy</td></tr>
+<tr><th>著者名</th><td>姓: 木原　名: 盾</td></tr>
+<tr><th>出版年月日</th><td>2021-12-26</td></tr>
+<tr><th>URL</th><td>https://underthecanopy2016.blogspot.com/2021/12/102021.html</td></tr>
+<tr><th>アクセス日時</th><td>2026-07-28</td></tr>
+<tr><th>言語</th><td>ja</td></tr></table>
+    </div>
+    <div class="arrow" aria-hidden="true">&#8594;</div>
+    <div class="output">
+      <div class="panel-label">出力される形</div>
+      <p class="out-label">文献リスト</p>
+      <p class="bib">木原盾，2021，「今年面白かった社会学論文10選（2021年）」，Under the Canopy，2021年12月26日，（2026年7月28日取得，https://underthecanopy2016.blogspot.com/2021/12/102021.html）．</p>
+      <p class="out-label">本文中の引用</p>
+      <p class="cite">（木原 2021）</p>
+      
+    </div>
+  </div>
+  
+  <p class="note">ポイント: 「ブログ記事」タイプを使います。記事の日付（日まで）を「出版年月日」欄に入れると、記事作成日として出力されます。</p>
+</section>
+
+<h2>自動でやってくれること</h2>
+<p>次のことは自分で書く必要がありません。スタイルが自動で処理します。</p>
+<ul>
+<li><strong>同じ著者・同じ年の区別</strong>: 2022a, 2022b が本文中の引用と文献リストの両方に付き、2件目以降の氏名は ―――― に置き換わります。<br><p class="bib">Kihara, Tate, 2022a, “The Life Course Origins of the Immigrant Advantage? Parental Nativity, Parental Education, and Academic Achievement Gaps From Kindergarten to High School in the United States,” <i>International Migration Review</i>, 56(2): 463-98.</p>
+<p class="bib">――――, 2022b, “Socioeconomic Selectivity of Japanese Migration to the Continental United States during the Age of Mass Migration,” <i>Journal of Ethnic and Migration Studies</i>, 48(11): 2577-600.</p>
+<p class="cite">（Kihara 2022a, 2022b）</p>
+<span class="note-inline">同じ年のなかでどちらが a になるかは、「出版年月日」欄に月まで入れてあれば早い順、なければタイトル順で決まります。刊行順にしたい場合は月まで入力してください。</span></li>
+<li><strong>同じ姓の著者の区別</strong>: 同じ姓の著者が複数いると、本文中の引用が自動でフルネーム（和文）や姓＋イニシャル（英語）に展開されます。</li>
+<li><strong>並び順</strong>: 同じ著者のなかでは 単著 → 単独の編書 → 共著 → 共編書 の順、同じカテゴリーのなかでは年の順に並びます。</li>
+</ul>
+
+<h2 id="faq">よくある失敗と直し方</h2>
+<table class="faq">
+<tr><th>症状</th><th>原因</th><th>直し方</th></tr>
+<tr><td>Word で手直しした文献リストが元に戻ってしまう</td><td>Zotero のフィールドのまま書き換えている</td><td>原稿が固まってから Zotero タブの「Unlink Citations」で連結を切り、そのあとで直す</td></tr>
+<tr><td>和文の本なのに、英語文献のようなカンマ区切り・書名イタリックで出る</td><td>「言語」欄が空、または「日本語」と書いてある</td><td>言語欄に <code>ja</code> と入力</td></tr>
+<tr><td>著者名が「香 佐藤」の順になる、姓名の間に変な区切りが出る</td><td>姓と名を1つの欄にまとめて入れている</td><td>名前のすぐ右にある四角いアイコン（ツールチップは Switch to Two Fields）を押して2欄形式にし、姓と名を分ける</td></tr>
+<tr><td>同じ著者・同じ年なのに 2022a / 2022b が付かない</td><td>実は同じアイテムを2回引用している。または2つのアイテムで著者名の入力形式が違う（Tate / T. など）</td><td>引用をクリックして中身を確認。2つのアイテムの作成者欄を同じ形式に揃える</td></tr>
+<tr><td>ウェブページの年が n.d. になる</td><td>「アクセス日時」が入っていない</td><td>アクセス日時（アクセスした日）を入力。出版年月日欄が空でもアクセス日時の年が使われます</td></tr>
+<tr><td>紙で読んだ本や論文に（URL）が付いてしまう</td><td>アクセス日時が入っている</td><td>紙媒体で利用した文献の「アクセス日時」を消す（URL だけなら付きません）</td></tr>
+<tr><td>訳書の年が「原著年=訳書年」の形にならない</td><td>原著年が「Original Date」欄に入っていない、または翻訳者名が作成者に入っていない</td><td>両方入れる（訳書カードを参照）</td></tr>
+<tr><td>「第2版」の位置がおかしい</td><td>「版」欄に入れている</td><td>規定どおり、書名の欄に「書名 第2版」と半角スペースで併記する</td></tr>
+</table>
+
+<div class="backmatter">
+<h2 id="credits">クレジットとライセンス</h2>
+<dl class="credits">
+<dt>本版の作成</dt><dd>木原盾/Tate KIHARA（慶應義塾大学）</dd>
+<dt>もとにしたスタイル（原著作物）</dt><dd>Jonathan Lewis・Kei Sato「Juris-Mで社会学評論」<a href="https://github.com/keisato0/jss-csl">https://github.com/keisato0/jss-csl</a></dd>
+<dt>その原型</dt><dd>「日本社会学会 (author-date, Japanese)」Jonathan Lewis（<a href="https://github.com/Juris-M/jm-styles/blob/master/jm-japan-sociological-society.csl">Juris-M 用のスタイル集 jm-styles</a> で公開されている CSL-M スタイル）</dd>
+<dt>もとにしたスタイルの contributor</dt><dd>Frank Bennett（citeproc-js 開発者）</dd>
+<dt>ライセンス</dt><dd><a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></dd>
+</dl>
+<p>「Juris-Mで社会学評論」は、Jonathan LEWIS氏（一橋大学）が作成したJuris-M用スタイル「日本社会学会 (author-date, Japanese)」をSATO氏が修正したもので、著者表示は両氏の連名になっています。和文と欧文で書式を切り替えるレイアウト構成は、LEWIS氏の原型から受け継いだ設計です。</p>
+<p class="note">本版は、もとにしたスタイルと同じ CC BY-SA 3.0 ライセンスを継承しています。本ファイルは同ライセンスの条件にもとづき、無保証で提供されます。</p>
+
+<h2 id="dev">開発・検証と利用上の注意</h2>
+<p>本版の編集・点検は、木原が Claude Code と Codex を補助的に用いて行いました。もとにしたスタイルへの改変（コードの削除・加筆・修正）は、すべて木原によるものです。もとにしたスタイルの作者は、本版の改変や内容には関与していません。修正にあたっては、試行版を湘南藤沢キャンパスの学生に試用してもらい、寄せられた意見や、利用中に明らかになった問題点を反映しました。協力してくださった学生の皆さんに感謝します。</p>
+<p>出力書式は、『社会学評論スタイルガイド』第3版の該当規定と照合し、macOS 環境の Zotero 上で複数回検証しています。規定の解釈と、それにもとづく実装上の最終判断は、木原が行っています。このページの出力例は、訳書の「手で直した後の形」として示す1行を除き、掲載した入力内容を Zotero と同じ引用処理エンジン（citeproc-js）で本スタイルにより処理した実際の結果です。</p>
+<p>本スタイルはβ版です。すべての文献種別や入力方法に完全に対応しているわけではなく、未発見の不具合や誤りが残っている可能性があります。原稿に出力された引用および文献リストが規定に適合しているかは、利用者自身で必ず最終確認してください。詳しい仕様と、現時点で規定どおりに出力できない箇所の一覧は、<a href="https://github.com/tatekihara/jss-csl-zotero">配布ページの README</a>を参照してください。</p>
+
+<h2 id="links">リンク</h2>
+<ul class="links">
+<li><a href="https://github.com/tatekihara/jss-csl-zotero">ファイルの配布ページ</a>（.csl ファイルと README）</li>
+<li><a href="https://www.zotero.org/download/">Zotero のダウンロード</a></li>
+<li><a href="https://jss-sociology.org/bulletin/guide/">『社会学評論スタイルガイド』第3版</a>（日本社会学会）</li>
+<li><a href="https://tatekihara.com/">木原盾HP</a></li>
+</ul>
+</div>
+
+</main>
+</body>
+</html>

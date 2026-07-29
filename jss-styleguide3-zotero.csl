@@ -1,0 +1,983 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="in-text" default-locale="en-US" page-range-format="minimal">
+  <!--
+    社会学評論スタイルガイド（第3版）準拠
+    Zotero 対応版（非公式 / unofficial）
+
+    日本社会学会が公式に提供・承認したスタイルではありません。
+    This is an unofficial style. It is not provided or endorsed by
+    the Japanese Sociological Society.
+
+    Original CSL-M style "Juris-Mで社会学評論" by Jonathan Lewis (Hitotsubashi University)
+    and Kei Sato (Kyoto University)
+    Adapted for standard Zotero (CSL 1.0) by Tate Kihara (Keio University)
+    
+    Based on: https://github.com/keisato0/jss-csl (jss-lewis-sato.csl)
+    which in turn derives from "日本社会学会 (author-date, Japanese)"
+    by Jonathan Lewis (Hitotsubashi University)
+    https://github.com/Juris-M/jm-styles/blob/master/jm-japan-sociological-society.csl
+    Style guide: https://jss-sociology.org/bulletin/guide/
+    
+    NOTE: This style uses multiple layout blocks with locale attributes
+    (a CSL-M extension). Zotero shows a validation warning on install;
+    rendering and word-processor behavior have been verified with
+    citeproc-js and in Zotero 9.
+    
+    USAGE: Set the Language field to ja (or ja-JP) for Japanese items.
+    English items may be left blank (the default layout is the English
+    one); en / en-US produce identical output. Do NOT write Japanese or
+    English as words. Any value other than a ja code falls back to the
+    English format.
+    
+    In-text citations follow the 3rd edition: works WITH a translator
+    render as (Author ORIGYEAR=TRANSYEAR: page), e.g. (Merton 1957=2024: 78);
+    reprints WITHOUT a translator render as (Author [ORIGYEAR] YEAR).
+
+    KNOWN LIMITATION: For translated works the 3rd edition bibliography
+    requires a two-part entry (original record, then the translation in
+    full-width parentheses). A single Zotero item cannot hold both
+    records, so the bibliography renders the translation itself as
+    AUTHOR，ORIGYEAR=TRANSYEAR，TITLE，TRANSLATOR訳，PUBLISHER
+    (pre-3rd-edition notation); edit such entries into the two-part
+    form manually before submission.
+
+    NOTE: Webpages and blog posts with an empty Date field show the
+    year of the Accessed date in the year slot (style guide sec. 3.8.1(2),
+    p.15; the printed examples are in sec. 4.5.3, p.29).
+    Do not update the Accessed date after finalizing a manuscript, or
+    in-text years will shift.
+  -->
+  <info>
+    <title>社会学評論スタイル 第3版（Zotero 用・非公式）</title>
+    <title-short>社会学評論(非公式)</title-short>
+    <id>https://github.com/tatekihara/jss-csl-zotero</id>
+    <link href="https://github.com/keisato0/jss-csl" rel="template"/>
+    <link href="https://jss-sociology.org/bulletin/guide/" rel="documentation"/>
+    <author>
+      <name>Jonathan Lewis (Hitotsubashi University)</name>
+    </author>
+    <author>
+      <name>Kei Sato (Kyoto University)</name>
+    </author>
+    <author>
+      <name>Tate Kihara (Keio University)</name>
+    </author>
+    <contributor>
+      <name>Frank Bennett</name>
+    </contributor>
+    <category citation-format="author-date"/>
+    <category field="sociology"/>
+    <summary>日本社会学会が公式に提供するスタイルではありません（unofficial）。『社会学評論スタイルガイド』第3版に準拠した有志による引用スタイルで、標準の Zotero に対応（Zotero 9 で動作確認）。日英混在文献リストに対応。Unofficial style, not endorsed by the Japanese Sociological Society. Originally developed as a CSL-M style for Juris-M by Lewis and Sato, adapted for standard Zotero by Kihara.</summary>
+    <updated>2026-07-29T00:00:00+09:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+
+  <locale xml:lang="en-US">
+    <style-options punctuation-in-quote="true"/>
+    <terms>
+      <term name="translator" form="short">trans.</term>
+      <term name="accessed" form="long">Retrieved</term>
+      <term name="page-range-delimiter">-</term>
+    </terms>
+  </locale>
+
+  <locale xml:lang="ja">
+    <style-options punctuation-in-quote="false"/>
+    <date form="text">
+      <date-part name="year" suffix="年"/>
+      <date-part name="month" form="numeric" suffix="月"/>
+      <date-part name="day" suffix="日"/>
+    </date>
+    <date form="numeric">
+      <date-part name="year"/>
+      <date-part name="month" form="numeric-leading-zeros" prefix="-"/>
+      <date-part name="day" form="numeric-leading-zeros" prefix="-"/>
+    </date>
+    <terms>
+      <term name="translator" form="short">訳</term>
+      <term name="accessed" form="long">取得</term>
+      <term name="editor" form="short">編</term>
+      <term name="no date" form="short">n.d.</term>
+      <term name="page-range-delimiter">-</term>
+    </terms>
+  </locale>
+
+  <!-- ============ 半角 MACROS (English) ============ -->
+
+  <macro name="contributors-半角">
+    <names variable="author">
+      <name and="text" name-as-sort-order="first" sort-separator=", " delimiter=", " delimiter-precedes-last="never"/>
+      <label form="short" plural="contextual" prefix=" "/>
+      <substitute>
+        <choose>
+          <if type="webpage post post-weblog" match="any">
+            <text variable="container-title"/>
+          </if>
+        </choose>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="title-半角"/>
+      </substitute>
+    </names>
+  </macro>
+
+  <macro name="contributors-short-半角">
+    <names variable="author">
+      <name form="short" and="text" delimiter=", " initialize-with=". " name-as-sort-order="all" sort-separator=", "/>
+      <label form="short" prefix=" "/>
+      <substitute>
+        <choose>
+          <if type="webpage post post-weblog" match="any">
+            <text variable="container-title"/>
+          </if>
+        </choose>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="title-半角"/>
+      </substitute>
+    </names>
+  </macro>
+
+  <macro name="secondary-contributors-半角">
+    <choose>
+      <if type="chapter paper-conference" match="none">
+        <names variable="editor translator" delimiter=", ">
+          <label form="verb" text-case="capitalize-first" suffix=" " plural="never"/>
+          <name and="text" delimiter=", "/>
+        </names>
+      </if>
+      <else>
+        <names variable="translator">
+          <label form="verb" text-case="capitalize-first" suffix=" " plural="never"/>
+          <name and="text" delimiter=", "/>
+        </names>
+      </else>
+    </choose>
+  </macro>
+
+  <macro name="container-contributors-半角">
+    <choose>
+      <if type="chapter paper-conference" match="any">
+        <names variable="container-author editor" delimiter=", ">
+          <name and="text" delimiter=", " delimiter-precedes-last="never"/>
+          <label form="short" plural="contextual" prefix=" "/>
+        </names>
+      </if>
+    </choose>
+  </macro>
+
+  <macro name="title-半角">
+    <choose>
+      <if variable="title" match="none">
+        <choose>
+          <if type="personal_communication" match="none">
+            <text variable="genre" text-case="capitalize-first"/>
+          </if>
+        </choose>
+      </if>
+      <else-if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+        <text variable="title" text-case="title" font-style="italic"/>
+      </else-if>
+      <else>
+        <text variable="title" text-case="title" quotes="true"/>
+      </else>
+    </choose>
+  </macro>
+
+  <macro name="container-title-半角">
+    <choose>
+      <if type="post post-weblog webpage" match="any">
+        <text variable="container-title" text-case="title"/>
+      </if>
+      <!-- 英語の大会報告も、会議録タイトルがなければ event-title を出す（イタリック
+           にしない。規定に欧文の大会報告例がないための設計判断） -->
+      <else-if type="paper-conference speech" match="any">
+        <choose>
+          <if variable="container-title">
+            <text variable="container-title" text-case="title" font-style="italic"/>
+          </if>
+          <else-if variable="event-title">
+            <text variable="event-title" text-case="title"/>
+          </else-if>
+          <else>
+            <text variable="event" text-case="title"/>
+          </else>
+        </choose>
+      </else-if>
+      <else>
+        <text variable="container-title" text-case="title" font-style="italic"/>
+      </else>
+    </choose>
+  </macro>
+
+  <macro name="publisher-半角">
+    <group delimiter=": ">
+      <text variable="publisher-place"/>
+      <text variable="publisher"/>
+    </group>
+  </macro>
+
+  <macro name="edition-半角">
+    <choose>
+      <if type="bill book graphic legal_case legislation motion_picture report song chapter paper-conference" match="any">
+        <choose>
+          <if is-numeric="edition">
+            <group delimiter=" ">
+              <number variable="edition" form="ordinal"/>
+              <text term="edition" form="short"/>
+            </group>
+          </if>
+          <else>
+            <number variable="edition"/>
+          </else>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+
+  <macro name="location-of-chapter">
+    <choose>
+      <if type="chapter paper-conference" match="any">
+        <choose>
+          <if variable="page">
+            <group delimiter=":">
+              <number variable="volume"/>
+              <number variable="page"/>
+            </group>
+          </if>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+
+  <macro name="locators-comma">
+    <choose>
+      <if type="article-newspaper">
+        <group delimiter=", ">
+          <!-- 「朝刊」「夕刊」のような非数値の版表記に label（版 / ed.）を足すと
+               「朝刊 版」になるため、edition-全角 と同じ is-numeric 分岐にそろえる -->
+          <choose>
+            <if is-numeric="edition">
+              <group delimiter=" ">
+                <number variable="edition"/>
+                <label variable="edition"/>
+              </group>
+            </if>
+            <else>
+              <text variable="edition"/>
+            </else>
+          </choose>
+        </group>
+      </if>
+      <!-- article-magazine (Zotero「雑誌記事」) は雑誌論文と同じ巻(号): ページ形式で
+           出す。規定 3.7 (p.14) は署名入りの雑誌記事を文献リストに載せると定める
+           のみで書式を示さないため、⑸雑誌論文 (p.21) に準じる設計判断 -->
+      <else-if type="article-journal article-magazine" match="any">
+        <choose>
+          <if variable="volume">
+            <group>
+              <number variable="volume"/>
+              <number variable="issue" prefix="(" suffix=")"/>
+              <number variable="page" prefix=": "/>
+            </group>
+          </if>
+          <else>
+            <!-- 巻がない場合、号も空だと prefix のコロンだけが残って
+                 「『誌名』: 21-40」になるため、delimiter で連結する -->
+            <group delimiter=": ">
+              <number variable="issue"/>
+              <number variable="page"/>
+            </group>
+          </else>
+        </choose>
+      </else-if>
+    </choose>
+  </macro>
+
+  <macro name="collection-title-半角">
+    <group delimiter=" ">
+      <text variable="collection-title" text-case="title"/>
+      <number variable="collection-number"/>
+    </group>
+  </macro>
+
+  <macro name="description-半角">
+    <group delimiter=" ">
+      <group delimiter=", ">
+        <choose>
+          <if type="interview">
+            <text variable="medium" text-case="capitalize-first"/>
+          </if>
+        </choose>
+        <choose>
+          <if variable="title" match="none"/>
+          <else-if type="thesis personal_communication"/>
+          <else-if variable="genre">
+            <group delimiter=" ">
+              <text variable="genre" text-case="capitalize-first"/>
+              <choose>
+                <if type="report">
+                  <number variable="number"/>
+                </if>
+              </choose>
+            </group>
+          </else-if>
+        </choose>
+      </group>
+      <group delimiter=" " prefix="(" suffix=")">
+        <text term="version"/>
+        <text variable="version"/>
+      </group>
+    </group>
+  </macro>
+
+  <macro name="access-core-半角">
+    <group delimiter=", " prefix="(" suffix=")">
+      <group delimiter=" ">
+        <text term="accessed" text-case="capitalize-first"/>
+        <date variable="accessed" form="text" date-parts="year-month-day"/>
+      </group>
+      <choose>
+        <if type="article-journal" variable="archive" match="all">
+          <text variable="archive"/>
+        </if>
+        <else-if variable="URL">
+          <text variable="URL"/>
+        </else-if>
+        <else>
+          <text variable="archive"/>
+        </else>
+      </choose>
+    </group>
+  </macro>
+
+  <macro name="access-半角">
+    <choose>
+      <if type="webpage post post-weblog" match="any">
+        <choose>
+          <if variable="URL archive" match="any">
+            <text macro="access-core-半角"/>
+          </if>
+          <else-if variable="medium">
+            <text variable="medium" prefix="(" suffix=")"/>
+          </else-if>
+        </choose>
+      </if>
+      <else-if variable="accessed">
+        <choose>
+          <if variable="URL archive" match="any">
+            <text macro="access-core-半角"/>
+          </if>
+          <else-if variable="medium">
+            <choose>
+              <if type="interview" match="none">
+                <text variable="medium" prefix="(" suffix=")"/>
+              </if>
+            </choose>
+          </else-if>
+        </choose>
+      </else-if>
+      <else-if variable="medium">
+        <choose>
+          <if type="interview" match="none">
+            <text variable="medium" prefix="(" suffix=")"/>
+          </if>
+        </choose>
+      </else-if>
+    </choose>
+  </macro>
+
+  <macro name="precise-date-半角">
+    <choose>
+      <if type="article-newspaper post post-weblog">
+        <date variable="issued" form="text" date-parts="year-month-day"/>
+      </if>
+    </choose>
+  </macro>
+
+  <!-- ============ 全角 MACROS (Japanese) ============ -->
+
+  <macro name="contributors-全角">
+    <names variable="author">
+      <name sort-separator="," delimiter="・" delimiter-precedes-last="always"/>
+      <label form="short" plural="never"/>
+      <substitute>
+        <choose>
+          <if type="webpage post post-weblog" match="any">
+            <text variable="container-title"/>
+          </if>
+        </choose>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="title-全角"/>
+      </substitute>
+    </names>
+  </macro>
+
+  <macro name="contributors-short-全角">
+    <names variable="author">
+      <name form="short" delimiter="・"/>
+      <label form="short" plural="never"/>
+      <substitute>
+        <choose>
+          <if type="webpage post post-weblog" match="any">
+            <text variable="container-title"/>
+          </if>
+        </choose>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="title-全角"/>
+      </substitute>
+    </names>
+  </macro>
+
+  <macro name="secondary-contributors-全角">
+    <choose>
+      <if type="chapter paper-conference" match="none">
+        <names variable="editor translator" delimiter="，">
+          <name delimiter="・"/>
+          <label form="short"/>
+        </names>
+      </if>
+      <else>
+        <names variable="translator">
+          <name delimiter="・"/>
+          <label form="short"/>
+        </names>
+      </else>
+    </choose>
+  </macro>
+
+  <macro name="container-contributors-全角">
+    <choose>
+      <if type="chapter paper-conference" match="any">
+        <names variable="container-author editor" delimiter="・">
+          <name delimiter="・" delimiter-precedes-last="always"/>
+          <label form="short" plural="never"/>
+        </names>
+      </if>
+    </choose>
+  </macro>
+
+  <macro name="title-全角">
+    <choose>
+      <if variable="title" match="none">
+        <choose>
+          <if type="personal_communication" match="none">
+            <text variable="genre"/>
+          </if>
+        </choose>
+      </if>
+      <else-if type="book">
+        <text variable="title" prefix="『" suffix="』"/>
+      </else-if>
+      <else-if type="report">
+        <choose>
+          <if variable="URL container-title" match="none">
+            <text variable="title" prefix="『" suffix="』"/>
+          </if>
+          <else>
+            <text variable="title" prefix="「" suffix="」"/>
+          </else>
+        </choose>
+      </else-if>
+      <else-if type="bill graphic legal_case legislation motion_picture song" match="any">
+        <text variable="title" prefix="『" suffix="』"/>
+      </else-if>
+      <else-if type="webpage post post-weblog" match="any">
+        <text variable="title" prefix="「" suffix="」"/>
+      </else-if>
+      <else>
+        <text variable="title" prefix="「" suffix="」"/>
+      </else>
+    </choose>
+  </macro>
+
+  <macro name="container-title-全角">
+    <choose>
+      <if type="post post-weblog webpage"/>
+      <else-if type="paper-conference speech" match="any">
+        <choose>
+          <!-- 未公刊の大会報告で会議録タイトルがないときは、Zotero の「学会名」
+               「会議名」欄（CSL: event-title / 旧 event）を同じ位置に出す。
+               規定 p.26「報告者名，大会開催年，「報告のタイトル」第○回日本社会学会
+               大会報告原稿．」の学会名の位置 -->
+          <if variable="container-title" match="none">
+            <choose>
+              <!-- event-title は現行 Zotero の書き出し。event は旧名で、古い CSL-JSON
+                   や RIS 経由のデータに残る（citeproc-js は両者を別変数として扱う） -->
+              <if variable="event-title">
+                <text variable="event-title"/>
+              </if>
+              <else>
+                <text variable="event"/>
+              </else>
+            </choose>
+          </if>
+          <else-if variable="publisher page editor" match="any">
+            <text variable="container-title" prefix="『" suffix="』"/>
+          </else-if>
+          <else>
+            <text variable="container-title"/>
+          </else>
+        </choose>
+      </else-if>
+      <else>
+        <text variable="container-title" prefix="『" suffix="』"/>
+      </else>
+    </choose>
+  </macro>
+
+  <macro name="container-title-plain-全角">
+    <choose>
+      <if type="post post-weblog webpage">
+        <text variable="container-title"/>
+      </if>
+    </choose>
+  </macro>
+
+  <macro name="publisher-全角">
+    <group>
+      <text variable="publisher"/>
+      <choose>
+        <if type="thesis">
+          <!-- 「○○年度」は種別（修士論文など）とセットでのみ出す。genre が空だと
+               「…研究科2020年度．」と年度だけが残るため、genre の有無で括る -->
+          <choose>
+            <if variable="genre">
+              <!-- 日付がまったくない入力で「年度修士論文」とならないよう、
+                   年度の並びは event-date か issued があるときだけ出す -->
+              <choose>
+                <if variable="event-date issued" match="any">
+              <group>
+                <choose>
+                  <if variable="event-date">
+                    <date variable="event-date" form="numeric" date-parts="year"/>
+                  </if>
+                  <else>
+                    <date variable="issued" form="numeric" date-parts="year"/>
+                  </else>
+                </choose>
+                <text value="年度"/>
+              </group>
+                </if>
+              </choose>
+              <text variable="genre"/>
+            </if>
+          </choose>
+        </if>
+      </choose>
+    </group>
+  </macro>
+
+  <macro name="edition-全角">
+    <choose>
+      <if type="bill book graphic legal_case legislation motion_picture report song chapter paper-conference" match="any">
+        <choose>
+          <if is-numeric="edition">
+            <group>
+              <text value="第"/>
+              <number variable="edition"/>
+              <text value="版"/>
+            </group>
+          </if>
+          <else>
+            <number variable="edition"/>
+          </else>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+
+  <macro name="collection-title-全角">
+    <group delimiter=" ">
+      <text variable="collection-title"/>
+      <number variable="collection-number"/>
+    </group>
+  </macro>
+
+  <macro name="description-全角">
+    <group>
+      <group delimiter="，">
+        <choose>
+          <if type="interview">
+            <text variable="medium"/>
+          </if>
+        </choose>
+        <choose>
+          <if variable="title" match="none"/>
+          <else-if type="thesis personal_communication"/>
+          <else-if variable="genre">
+            <group>
+              <text variable="genre"/>
+              <choose>
+                <if type="report">
+                  <number variable="number" prefix="（" suffix="）"/>
+                </if>
+              </choose>
+            </group>
+          </else-if>
+        </choose>
+      </group>
+    </group>
+  </macro>
+
+  <macro name="report-medium-全角">
+    <choose>
+      <if type="report">
+        <text variable="medium" prefix="［" suffix="］"/>
+      </if>
+    </choose>
+  </macro>
+
+  <macro name="access-core-全角">
+    <group delimiter="，" prefix="（" suffix="）">
+      <group>
+        <date variable="accessed" form="text" date-parts="year-month-day"/>
+        <text term="accessed"/>
+      </group>
+      <choose>
+        <if type="article-journal" variable="archive" match="all">
+          <text variable="archive"/>
+        </if>
+        <else-if variable="URL">
+          <text variable="URL"/>
+        </else-if>
+        <else>
+          <text variable="archive"/>
+        </else>
+      </choose>
+    </group>
+  </macro>
+
+  <macro name="access-全角">
+    <choose>
+      <if type="webpage post post-weblog" match="any">
+        <choose>
+          <if variable="URL archive" match="any">
+            <text macro="access-core-全角"/>
+          </if>
+          <else-if variable="medium">
+            <text variable="medium" prefix="（" suffix="）"/>
+          </else-if>
+        </choose>
+      </if>
+      <else-if variable="accessed">
+        <choose>
+          <if variable="URL archive" match="any">
+            <text macro="access-core-全角"/>
+          </if>
+          <else-if variable="medium">
+            <choose>
+              <if type="report interview" match="none">
+                <text variable="medium" prefix="（" suffix="）"/>
+              </if>
+            </choose>
+          </else-if>
+        </choose>
+      </else-if>
+      <else-if variable="medium">
+        <choose>
+          <if type="report interview" match="none">
+            <text variable="medium" prefix="（" suffix="）"/>
+          </if>
+        </choose>
+      </else-if>
+    </choose>
+  </macro>
+
+  <macro name="precise-date-全角">
+    <choose>
+      <if type="article-newspaper post post-weblog">
+        <date variable="issued" form="text" date-parts="year-month-day"/>
+      </if>
+    </choose>
+  </macro>
+
+  <!-- ============ SHARED MACROS ============ -->
+
+  <macro name="issued-year-effective">
+    <choose>
+      <if variable="issued">
+        <date variable="issued" form="numeric" date-parts="year"/>
+      </if>
+      <else-if type="paper-conference thesis" match="any">
+        <choose>
+          <if variable="event-date">
+            <date variable="event-date" form="numeric" date-parts="year"/>
+          </if>
+          <else>
+            <text term="no date" form="short"/>
+          </else>
+        </choose>
+      </else-if>
+      <else-if type="webpage post post-weblog" match="any">
+        <choose>
+          <if variable="accessed">
+            <date variable="accessed" form="numeric" date-parts="year"/>
+          </if>
+          <else>
+            <text term="no date" form="short"/>
+          </else>
+        </choose>
+      </else-if>
+      <else>
+        <text term="no date" form="short"/>
+      </else>
+    </choose>
+  </macro>
+
+  <macro name="year">
+    <choose>
+      <if variable="translator">
+        <group>
+          <date variable="original-date" form="numeric" date-parts="year" suffix="="/>
+          <group>
+            <text macro="issued-year-effective"/>
+            <text variable="year-suffix"/>
+          </group>
+        </group>
+      </if>
+      <else>
+        <group delimiter=" ">
+          <date variable="original-date" form="numeric" date-parts="year" prefix="[" suffix="]"/>
+          <group>
+            <text macro="issued-year-effective"/>
+            <text variable="year-suffix"/>
+          </group>
+        </group>
+      </else>
+    </choose>
+  </macro>
+
+  <macro name="year-sort">
+    <choose>
+      <if variable="issued">
+        <date variable="issued" form="numeric" date-parts="year-month-day"/>
+      </if>
+      <else-if type="paper-conference thesis" match="any">
+        <choose>
+          <if variable="event-date">
+            <date variable="event-date" form="numeric" date-parts="year-month-day"/>
+          </if>
+          <else>
+            <text term="no date" form="short"/>
+          </else>
+        </choose>
+      </else-if>
+      <else-if type="webpage post post-weblog" match="any">
+        <choose>
+          <if variable="accessed">
+            <date variable="accessed" form="numeric" date-parts="year-month-day"/>
+          </if>
+          <else>
+            <text term="no date" form="short"/>
+          </else>
+        </choose>
+      </else-if>
+      <else>
+        <text term="no date" form="short"/>
+      </else>
+    </choose>
+  </macro>
+
+  <macro name="layout-citation-year-page">
+    <choose>
+      <if variable="translator">
+        <group>
+          <date variable="original-date" form="numeric" date-parts="year" suffix="="/>
+          <text macro="issued-year-effective"/>
+        </group>
+      </if>
+      <else>
+        <group delimiter=" ">
+          <date variable="original-date" form="numeric" date-parts="year" prefix="[" suffix="]"/>
+          <text macro="issued-year-effective"/>
+        </group>
+      </else>
+    </choose>
+    <text variable="year-suffix"/>
+    <choose>
+      <if variable="locator">
+        <text variable="locator" prefix=": "/>
+      </if>
+    </choose>
+  </macro>
+
+  <macro name="layout-citation-全角">
+    <group delimiter=" ">
+      <text macro="contributors-short-全角"/>
+      <text macro="layout-citation-year-page"/>
+    </group>
+  </macro>
+
+  <macro name="layout-citation-半角">
+    <group delimiter=" ">
+      <text macro="contributors-short-半角"/>
+      <text macro="layout-citation-year-page"/>
+    </group>
+  </macro>
+
+  <macro name="sort-rolecount">
+    <group delimiter="-">
+      <names variable="author">
+        <name form="count"/>
+        <substitute>
+          <names variable="editor"/>
+          <names variable="translator"/>
+        </substitute>
+      </names>
+      <choose>
+        <if variable="author">
+          <text value="1"/>
+        </if>
+        <else-if variable="editor">
+          <text value="2"/>
+        </else-if>
+        <else>
+          <text value="1"/>
+        </else>
+      </choose>
+    </group>
+  </macro>
+
+  <macro name="recipient">
+    <choose>
+      <if type="personal_communication">
+        <choose>
+          <if variable="genre">
+            <text variable="genre" text-case="capitalize-first"/>
+          </if>
+          <else>
+            <text term="letter" text-case="capitalize-first"/>
+          </else>
+        </choose>
+      </if>
+    </choose>
+    <names variable="recipient" delimiter=", ">
+      <label form="verb" text-case="lowercase" suffix=" "/>
+      <name and="text" delimiter=", "/>
+    </names>
+  </macro>
+
+  <!-- ============ CITATION ============ -->
+  <citation 
+    et-al-min="3" 
+    et-al-use-first="1" 
+    disambiguate-add-year-suffix="true" 
+    disambiguate-add-names="true" 
+    disambiguate-add-givenname="true" 
+    givenname-disambiguation-rule="primary-name"
+    cite-group-delimiter=", "
+    collapse="year">
+    <layout prefix="（" suffix="）" delimiter="; " locale="ja">
+      <text macro="layout-citation-全角"/>
+    </layout>
+    <layout prefix="（" suffix="）" delimiter="; ">
+      <text macro="layout-citation-半角"/>
+    </layout>
+  </citation>
+
+  <!-- ============ BIBLIOGRAPHY ============ -->
+  <bibliography 
+    hanging-indent="true" 
+    subsequent-author-substitute="――――" 
+    entry-spacing="0"
+    name-delimiter=", ">
+    <sort>
+      <key macro="contributors-半角" names-min="1" names-use-first="1"/>
+      <key macro="sort-rolecount"/>
+      <key macro="year-sort"/>
+      <key variable="title"/>
+      <key macro="contributors-半角"/>
+    </sort>
+
+    <!-- Japanese bibliography -->
+    <layout suffix="．" locale="ja">
+      <group delimiter="，">
+        <text macro="contributors-全角"/>
+        <text macro="year"/>
+        <group>
+          <choose>
+            <if type="webpage post post-weblog" match="any">
+              <group delimiter="，">
+                <text macro="title-全角"/>
+                <text macro="container-title-plain-全角"/>
+                <text macro="precise-date-全角"/>
+              </group>
+            </if>
+            <else>
+              <text macro="title-全角"/>
+              <text macro="container-contributors-全角"/>
+              <text macro="container-title-全角"/>
+              <group delimiter="，">
+                <text macro="secondary-contributors-全角"/>
+                <group delimiter="，">
+                  <text macro="report-medium-全角"/>
+                  <text macro="description-全角"/>
+                  <text macro="edition-全角"/>
+                  <text macro="publisher-全角"/>
+                  <group>
+                    <text macro="collection-title-全角"/>
+                    <group delimiter="，">
+                      <text macro="precise-date-全角"/>
+                      <text macro="location-of-chapter"/>
+                      <text macro="locators-comma"/>
+                    </group>
+                  </group>
+                </group>
+              </group>
+            </else>
+          </choose>
+        </group>
+        <choose>
+          <if type="article-journal" variable="page" match="all">
+            <choose>
+              <if variable="URL archive medium" match="any">
+                <text macro="access-全角"/>
+              </if>
+            </choose>
+          </if>
+          <else>
+            <text macro="access-全角"/>
+          </else>
+        </choose>
+      </group>
+    </layout>
+
+    <!-- English bibliography -->
+    <layout>
+      <group delimiter=", " suffix=".">
+        <text macro="contributors-半角"/>
+        <text macro="year"/>
+        <text macro="title-半角"/>
+        <text macro="description-半角"/>
+        <text macro="secondary-contributors-半角"/>
+        <text macro="container-contributors-半角"/>
+        <text macro="container-title-半角"/>
+        <text macro="edition-半角"/>
+        <text macro="collection-title-半角"/>
+        <text macro="precise-date-半角"/>
+        <choose>
+          <if type="article-journal" match="none">
+            <text macro="publisher-半角"/>
+          </if>
+        </choose>
+        <text macro="location-of-chapter"/>
+        <text macro="locators-comma"/>
+        <choose>
+          <if type="article-journal" variable="page" match="all">
+            <choose>
+              <if variable="URL archive medium" match="any">
+                <text macro="access-半角"/>
+              </if>
+            </choose>
+          </if>
+          <else>
+            <text macro="access-半角"/>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>
