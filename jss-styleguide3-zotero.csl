@@ -6,7 +6,7 @@
 
     日本社会学会が公式に提供・承認したスタイルではありません。
     This is an unofficial style. It is not provided or endorsed by
-    the Japanese Sociological Society.
+    the Japan Sociological Society.
 
     Original CSL-M style "Juris-Mで社会学評論" by Jonathan Lewis (Hitotsubashi University)
     and Kei Sato (Kyoto University)
@@ -67,7 +67,7 @@
     </contributor>
     <category citation-format="author-date"/>
     <category field="sociology"/>
-    <summary>日本社会学会が公式に提供するスタイルではありません（unofficial）。『社会学評論スタイルガイド』第3版に準拠した有志による引用スタイルで、標準の Zotero に対応（Zotero 9 で動作確認）。日英混在文献リストに対応。Unofficial style, not endorsed by the Japanese Sociological Society. Originally developed as a CSL-M style for Juris-M by Lewis and Sato, adapted for standard Zotero by Kihara.</summary>
+    <summary>日本社会学会が公式に提供するスタイルではありません（unofficial）。『社会学評論スタイルガイド』第3版に準拠した有志による引用スタイルで、標準の Zotero に対応（Zotero 9 で動作確認）。日英混在文献リストに対応。Unofficial style, not endorsed by the Japan Sociological Society. Originally developed as a CSL-M style for Juris-M by Lewis and Sato, adapted for standard Zotero by Kihara.</summary>
     <updated>2026-07-29T00:00:00+09:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
