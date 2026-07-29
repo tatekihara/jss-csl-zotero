@@ -7,7 +7,7 @@
 
 想定している主な利用者は、木原研究会（ゼミ）で卒業プロジェクトや修士論文を書く学生です。
 
-**Zotero を使うのが初めての方へ**: 入力欄と出力結果を並べて説明した HTML の使い方ガイドを同梱しています（`jss-styleguide3-zotero-guide.html`）。ウェブ版は https://tatekihara.github.io/jss-csl-zotero/ です。この README は仕様の詳細と既知の制約をまとめたもので、はじめて使うときは使い方ガイドから読むことをお勧めします。
+**Zotero を使うのが初めての方へ**: 入力欄と出力結果を並べて説明した HTML の使い方ガイドを同梱しています（`guide-jss-styleguide3-zotero.html`）。ウェブ版は https://tatekihara.github.io/jss-csl-zotero/ です。この README は仕様の詳細と既知の制約をまとめたもので、はじめて使うときは使い方ガイドから読むことをお勧めします。
 
 このZoteroのcslファイルは、木原盾/Tate KIHARA（慶應義塾大学）が、Kei SATO氏（京都大学）がCC BY-SA 3.0ライセンスのもとで公開しているJuris-M用スタイル「Juris-Mで社会学評論」（https://github.com/keisato0/jss-csl ）をフォークし、標準のZoteroで使えるように移植したものです。同スタイルは、Jonathan LEWIS氏（一橋大学）が作成したJuris-M用スタイル「日本社会学会 (author-date, Japanese)」をSATO氏が修正したもので、著者表示は両氏の連名になっています。和文と欧文で書式を切り替えるレイアウト構成は、LEWIS氏の原型から受け継いだ設計です。
 
